@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "label": "Start hosting embeded page",
+      "command": "npx http-server -p 8080",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/app"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": "^.*$",
+            "file": 0,
+            "location": 1,
+            "message": 2
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Available on"
+        }
+      }
+    }
+  ]
+}

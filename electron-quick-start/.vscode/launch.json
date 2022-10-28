@@ -10,22 +10,38 @@
       "windows": {
         "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
       },
+      // "preLaunchTask": "Start hosting embeded page",
+      "args": ["--remote-debugging-port=9222"],
       "program": "${workspaceRoot}/main.js",
-      "protocol": "inspector"
+      "presentation": {
+        "hidden": true,
+        "group": "hidden",
+        "order": 1
+      }
     },
     {
-      "name": "Debug Renderer Process",
+      "name": "Attach Renderer Process",
       "type": "chrome",
-      "request": "launch",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-      "windows": {
-        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
-      },
-      "runtimeArgs": [
-        "${workspaceRoot}/main.js",
-        "--remote-debugging-port=9222"
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceRoot}/app",
+      "timeout": 60000,
+      "presentation": {
+        "hidden": true,
+        "group": "hidden",
+        "order": 2
+      }
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Debug Main & Renderer Process",
+      "configurations": [
+        "Debug Main Process",
+        "Attach Renderer Process"
       ],
-      "webRoot": "${workspaceRoot}"
+      "preLaunchTask": "Start hosting embeded page",
+      "stopAll": true
     }
   ]
 }

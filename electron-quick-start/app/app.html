@@ -1,0 +1,12 @@
+<!-- This page simulates video filter app code -->
+<h3>Embeded webpage</h3>
+<button>Click</button>
+<script>
+    const button = document.querySelector("button");
+    let counter = 0;
+    button.onclick = (e) => {
+        counter++;
+        button.innerText = 'Clicked ' + counter;
+        e.preventDefault();
+    }
+</script>
